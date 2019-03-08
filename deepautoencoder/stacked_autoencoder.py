@@ -3,7 +3,7 @@ import deepautoencoder.utils as utils
 import tensorflow as tf
 
 allowed_activations = ['sigmoid', 'tanh', 'softmax', 'relu', 'linear']
-allowed_noises = [None, 'gaussian', 'mask']
+allowed_noises = [None, 'gaussian', 'mask', 'swap']
 allowed_losses = ['rmse', 'cross-entropy']
 
 
@@ -45,6 +45,17 @@ class StackedAutoEncoder:
         if self.noise == 'gaussian':
             n = np.random.normal(0, 0.1, (len(x), len(x[0])))
             return x + n
+        if 'swap' in self.noise:
+            frac = float(self.noise.split('-')[1])
+            temp = np.copy(x)
+            for i in temp:
+                index_temp = np.random.choice(len(i), round(
+                    frac * len(i)), replace=False)
+                replace_s = i[index_temp].copy()
+                import random
+                random.shuffle(replace_s)
+                i[index_temp] = replace_s
+            return temp
         if 'mask' in self.noise:
             frac = float(self.noise.split('-')[1])
             temp = np.copy(x)
