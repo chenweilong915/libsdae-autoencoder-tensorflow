@@ -10,6 +10,7 @@ A simple Tensorflow based library for Deep autoencoder and denoising AE. Library
 ```
 pip install git+https://github.com/rajarsheem/libsdae.git
 ```
+This is the origin install way, if you want to install this repo, please use git clone or replace deepstackencoder file of origin repo with this repo.
 
 ## Usage and small doc
 <i>test.ipynb</i> has small example where both a tiny and a large dataset is used.
