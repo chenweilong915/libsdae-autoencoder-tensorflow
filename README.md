@@ -29,7 +29,7 @@ result = model.transform(np.random.rand(5, x.shape[1]))
 ### Important points:
 * If noise is not given, it becomes an autoencoder instead of denoising autoencoder.
 * dims refers to the dimenstions of hidden layers. (3 layers in this case)
-* noise = (optional)['gaussian', 'mask-0.4']. mask-0.4 means 40% of bits will be masked for each example.
+* noise = (optional)['gaussian', 'mask-0.4', 'swap-0.5']. mask-0.4(swap) means 40% of bits will be masked(swaped) for each example.
 * x_ is the encoded feature representation of x.
 * loss = (optional) reconstruction error. rmse or softmax with cross entropy are allowed. default is rmse.
 * print_step is the no. of steps to skip between two loss prints.
