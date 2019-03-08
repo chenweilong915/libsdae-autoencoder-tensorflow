@@ -17,6 +17,12 @@ def noise_validator(noise, allowed_noises):
                 return True
             else:
                 return False
+        elif noise.split('-')[0] == 'swap' and float(noise.split('-')[1]):
+            t = float(noise.split('-')[1])
+            if t >= 0.0 and t <= 1.0:
+                return True
+            else:
+                return False
     except:
         return False
     pass
